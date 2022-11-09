@@ -18,14 +18,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.naming.NamingException;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-
+/*
 @Configuration
 @EnableTransactionManagement
 //@PropertySource("classpath:persistence-jndi.properties")
 @ComponentScan("com.oss.webbackend.model")
 @EnableJpaRepositories(basePackages = "com.oss.webbackend.repository")
-public class PersistenceJNDIConfig {
 
+ */
+public class PersistenceJNDIConfig {
+/*
     @Autowired
     private Environment env;
 
@@ -61,4 +63,6 @@ public class PersistenceJNDIConfig {
         transactionManager.setEntityManagerFactory(emf);
         return transactionManager;
     }
+    
+ */
 }

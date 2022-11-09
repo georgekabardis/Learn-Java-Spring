@@ -4,7 +4,11 @@ import com.oss.webbackend.dto.CustomerDto;
 import com.oss.webbackend.mapper.CustomerMapper;
 import com.oss.webbackend.model.Customer;
 import com.oss.webbackend.repository.CustomerRepository;
+import oracle.net.aso.b;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -16,6 +20,7 @@ import java.util.Optional;
 @Service
 public class CustomerService {
 
+
     @Autowired
     CustomerRepository customerRepo;
     @Autowired
@@ -26,14 +31,79 @@ public class CustomerService {
         return listCustomers;
     }
 
-    public Optional<Customer> getCustomerById(Long id){
-       return customerRepo.findById(id);
+    public Optional<Customer> getCustomerById(Long id) {
+        return customerRepo.findById(id);
 
     }
 
-    public List<CustomerDto> getAllCustomerDtos(){
-        return customerMapper.toCustomerDtos(customerRepo.findAll());
+
+    public List<Customer> getCustomerByCust(String fromcust, String tocust) {
+/*
+    sssss
+        int pageNo = 0;
+        int pageSize = 5;
+        Pageable pageable = (Pageable) PageRequest.of(pageNo, pageSize);
+
+        // findAll method and pass pageable instance
+        Page<Customer> page = (Page<Customer>) customerRepo.findByCust(fromcust,tocust,pageable);
+
+        List<Customer> cust1 = page.getContent();
+
+*/
+        List<Customer> cust1 = customerRepo.findByCust(fromcust, tocust);
+
+        return cust1;
+
     }
+
+    public List<Customer> getCustomerByCust2(String fromcust, String tocust) {
+
+        int pageNo = 0;
+        int pageSize = 15;
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        Slice<Customer> slice = customerRepo.findByCust2(fromcust, tocust, pageable);
+
+        List<Customer> list1 = slice.getContent();
+
+        /*
+        while(slice.hasNext()) {
+            slice = customerRepo.findByCust2(fromcust, tocust,  slice.nextPageable());
+
+        }
+
+         */
+
+
+
+        return list1;
+       /*
+         List<Student> studentsInBatch = slice.getContent();
+    studentsInBatch.forEach(emailService::sendEmailToStudent);
+
+    while(slice.hasNext()) {
+        slice = repository.findAllByFirstName(firstName, slice.nextPageable());
+        slice.get().forEach(emailService::sendEmailToStudent);
+    }
+        */
+
+
+
+    }
+
+    public List<Customer> getCust5(String fromcust, String tocust) {
+
+        List<Customer> list1 = null;
+                //customerRepo.getCust5(fromcust, tocust);
+
+        return list1;
+
+
+    }
+
+
+    //public List<CustomerDto> getAllCustomerDtos(){
+    //     return customerMapper.toCustomerDtos(customerRepo.findAll());
+    // }
 
     @Autowired
     private EntityManager entityManager;

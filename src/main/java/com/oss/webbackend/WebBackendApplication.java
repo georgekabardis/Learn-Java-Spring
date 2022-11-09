@@ -21,8 +21,11 @@ public class WebBackendApplication extends SpringBootServletInitializer {
 		SpringApplication.run(com.oss.webbackend.WebBackendApplication.class, args);
 	}
 
+	/*
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		return builder.sources(com.oss.webbackend.WebBackendApplication.class);
 	}
+	
+	 */
 }

@@ -6,10 +6,7 @@ import com.oss.webbackend.service.CustomerService;
 import com.oss.webbackend.util.CatEjbConnectionBridge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -47,6 +44,43 @@ public class CustomerController {
         return customer;
     }
 
+
+
+
+    @GetMapping("/customerByCust")
+    @ResponseBody
+    public List<Customer> customerByCust(@RequestParam  String fromcust,@RequestParam  String tocust) {
+        List<Customer> customer = customerService.getCustomerByCust(fromcust,tocust);
+//        CatEjbConnectionBridge connectionBridge = new CatEjbConnectionBridge();
+//        connectionBridge.setConnection(em);
+//        Customer customer = customerService.customFindMethodConn(connectionBridge, id);
+        return customer;
+    }
+
+
+    @GetMapping("/customerByCust2")
+    @ResponseBody
+    public List<Customer> customerByCust2(@RequestParam String fromcust, @RequestParam  String tocust) {
+        List<Customer> customer = customerService.getCustomerByCust2(fromcust,tocust);
+//        CatEjbConnectionBridge connectionBridge = new CatEjbConnectionBridge();
+//        connectionBridge.setConnection(em);
+//        Customer customer = customerService.customFindMethodConn(connectionBridge, id);
+        return customer;
+    }
+
+/*
+    @GetMapping("/customerByCust3")
+    @ResponseBody
+    public List<Customer> customerByCust3(@RequestParam  String fromcust,@RequestParam  String tocust) {
+        List<Customer> customer = customerService.getCustcc(fromcust,tocust);
+//        CatEjbConnectionBridge connectionBridge = new CatEjbConnectionBridge();
+//        connectionBridge.setConnection(em);
+//        Customer customer = customerService.customFindMethodConn(connectionBridge, id);
+        return customer;
+    }
+*/
+
+
     @GetMapping("/customer")
     @ResponseBody
     public Optional<Customer> customerById() {
@@ -54,11 +88,5 @@ public class CustomerController {
         return customer;
     }
 
-    @GetMapping("/customerDtos")
-    @ResponseBody
-    public List<CustomerDto> listAllDtos(Model model) {
-        List<CustomerDto> listCustomersDto = customerService.getAllCustomerDtos();
-        //  model.addAttribute("listCustomers", listCustomers);
-        return listCustomersDto;
-    }
+
 }
