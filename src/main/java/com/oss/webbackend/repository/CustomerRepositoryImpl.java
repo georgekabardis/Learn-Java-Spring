@@ -16,19 +16,16 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
     @Override
     public List<Customer> getCust5(String fromcust, String tocust) {
 
-        Query q1 = entityManager.createQuery("SELECT b from Customer b where b.cust >= :fromcust and  b.cust <= :tocust");
+        Query q1 = entityManager.createQuery("SELECT b from Customer b"+
+                " where b.cust >= :fromcust and  b.cust <= :tocust"
+            ,Customer.class);
+
+
 
         q1.setParameter("fromcust",fromcust);
         q1.setParameter("tocust", tocust);
 
-        /*
-        return entityManager.createQuery("SELECT p from Customer p where 1 = 2")
-                .unwrap(org.hibernate.query.Query.class)
 
-                .getResultList();}
-
-
-         */
         List<Customer> list1 = q1
                  .setMaxResults(4)
                 .getResultList();
