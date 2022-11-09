@@ -68,17 +68,17 @@ public class CustomerController {
         return customer;
     }
 
-/*
-    @GetMapping("/customerByCust3")
+
+    @GetMapping("/customerByCust5")
     @ResponseBody
-    public List<Customer> customerByCust3(@RequestParam  String fromcust,@RequestParam  String tocust) {
-        List<Customer> customer = customerService.getCustcc(fromcust,tocust);
+    public List<Customer> customerByCust5(@RequestParam  String fromcust,@RequestParam  String tocust) {
+        List<Customer> customer = customerService.getCust5(fromcust,tocust);
 //        CatEjbConnectionBridge connectionBridge = new CatEjbConnectionBridge();
 //        connectionBridge.setConnection(em);
 //        Customer customer = customerService.customFindMethodConn(connectionBridge, id);
         return customer;
     }
-*/
+
 
 
     @GetMapping("/customer")

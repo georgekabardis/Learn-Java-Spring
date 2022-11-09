@@ -81,8 +81,7 @@ public class CustomerService {
 
     public List<Customer> getCust5(String fromcust, String tocust) {
 
-        List<Customer> list1 = null;
-                //customerRepo.getCust5(fromcust, tocust);
+        List<Customer> list1 =    customerRepo.getCust5(fromcust, tocust);
 
         return list1;
 

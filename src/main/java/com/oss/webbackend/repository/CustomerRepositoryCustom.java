@@ -4,6 +4,6 @@ import com.oss.webbackend.model.Customer;
 
 import java.util.List;
 
-public interface  CustomerServiceCustom {
- List<Customer> getCustcc();
+public interface CustomerRepositoryCustom {
+ List<Customer> getCust5(String fromcust, String tocust) ;
 }
