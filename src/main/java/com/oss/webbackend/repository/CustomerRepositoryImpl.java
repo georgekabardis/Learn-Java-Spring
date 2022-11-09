@@ -29,7 +29,9 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
 
 
          */
-        List<Customer> list1 = q1.getResultList();
+        List<Customer> list1 = q1
+                 .setMaxResults(4)
+                .getResultList();
         return list1;
 
     }
