@@ -38,18 +38,7 @@ public class CustomerService {
 
 
     public List<Customer> getCustomerByCust(String fromcust, String tocust) {
-/*
-    sssss
-        int pageNo = 0;
-        int pageSize = 5;
-        Pageable pageable = (Pageable) PageRequest.of(pageNo, pageSize);
 
-        // findAll method and pass pageable instance
-        Page<Customer> page = (Page<Customer>) customerRepo.findByCust(fromcust,tocust,pageable);
-
-        List<Customer> cust1 = page.getContent();
-
-*/
         List<Customer> cust1 = customerRepo.findByCust(fromcust, tocust);
 
         return cust1;
@@ -59,7 +48,7 @@ public class CustomerService {
     public List<Customer> getCustomerByCust2(String fromcust, String tocust) {
 
         int pageNo = 0;
-        int pageSize = 15;
+        int pageSize = 5;
         Pageable pageable = PageRequest.of(pageNo, pageSize);
         Slice<Customer> slice = customerRepo.findByCust2(fromcust, tocust, pageable);
 
