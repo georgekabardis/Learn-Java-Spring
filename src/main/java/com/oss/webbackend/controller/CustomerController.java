@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.domain.Page;
 
 @RestController
 public class CustomerController {
@@ -60,8 +61,8 @@ public class CustomerController {
 
     @GetMapping("/customerByCust2")
     @ResponseBody
-    public List<Customer> customerByCust2(@RequestParam String fromcust, @RequestParam  String tocust) {
-        List<Customer> customer = customerService.getCustomerByCust2(fromcust,tocust);
+    public Page<Customer> customerByCust2(@RequestParam String fromcust, @RequestParam  String tocust) {
+        Page<Customer> customer = customerService.getCustomerByCust2(fromcust,tocust);
 //        CatEjbConnectionBridge connectionBridge = new CatEjbConnectionBridge();
 //        connectionBridge.setConnection(em);
 //        Customer customer = customerService.customFindMethodConn(connectionBridge, id);

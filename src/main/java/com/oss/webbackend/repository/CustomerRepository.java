@@ -23,7 +23,7 @@ public interface CustomerRepository  extends JpaRepository<Customer, Long>
 
 
     @Query(value = "select b from Customer b where b.cust >= :fromcust and  b.cust <= :tocust   ")
-    Slice<Customer> findByCust2(@Param("fromcust") String fromcust, @Param("tocust") String tocust, Pageable pageable);
+    Page<Customer> findByCust2(@Param("fromcust") String fromcust, @Param("tocust") String tocust, Pageable pageable);
 
 /*
 
