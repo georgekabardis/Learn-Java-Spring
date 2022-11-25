@@ -1,16 +1,10 @@
 package com.oss.webbackend.dto;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@NoArgsConstructor
+@Data
 public class ParamsErpAA implements Serializable {
    private  String parama;
 
