@@ -29,21 +29,23 @@ h bazeis  sto application.properties    springdoc.packagesToScan=com.oss.webback
 =============================================
  */
 
-//@Component
 
-@ComponentScan(basePackages = "com.oss.webbackend.config.OpswTransManager")
+
+//@ComponentScan(basePackages = "com.oss.webbackend.config.OpswTransManager")
 @Configuration
-public class OpswTransManager
+//@Component
+public  class OpswTransManager
 {
 
-  @Bean
-  public EntityManager getEntityManager()
+
+  public  EntityManager getEntityManager()
   {
     return entityManager;
   }
   
 
+
   @PersistenceContext
-  private EntityManager entityManager; 
+  private  EntityManager entityManager;
   
 }

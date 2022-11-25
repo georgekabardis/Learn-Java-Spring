@@ -1,14 +1,20 @@
 package com.oss.webbackend.service;
 
 import com.oss.webbackend.config.OpswTransManager;
+import com.oss.webbackend.dto.CustomerDto;
+import com.oss.webbackend.dto.GkCustomerDto;
+import com.oss.webbackend.dto.ParamsErpAA;
 import com.oss.webbackend.mapper.CustomerMapper;
 import com.oss.webbackend.model.Customer;
 import com.oss.webbackend.repository.CustomerRepository;
+import oracle.security.pki.util.EccCurveParameters;
+import oracle.security.pki.util.TrustFlags;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.dao.DataAccessException;
@@ -67,6 +73,15 @@ public class CustomerService
          Slice avoids triggering a count query to calculate the overall number of pages as that might be expensive.
 
      */
+
+
+    /*
+        q.setFirstResult(pager.getFromIndex());
+        q.setMaxResults(pager.getPageRows());
+    list = (List<Customer>) q.getResultList();
+  */
+
+
     int pageNo = 1;
     int pageSize = 12;
     Pageable pageable = PageRequest.of(pageNo, pageSize);
@@ -147,6 +162,28 @@ public class CustomerService
       throw e;
     }
 
+  }
+
+
+  public GkCustomerDto GkCustomerDto()
+  {
+    GkCustomerDto  gkCustomerDto = new GkCustomerDto();
+    List<CustomerDto> customerDtoList = new ArrayList<>();
+    CustomerDto customerDto = new CustomerDto();
+    customerDto.setAfm("afmdata");
+    customerDtoList.add(customerDto);
+
+    ParamsErpAA paramsErpAA = new ParamsErpAA();
+    paramsErpAA.setParama("param1val");
+
+    gkCustomerDto.setCustomerDtoList(customerDtoList);
+    gkCustomerDto.setParamsErpAA(paramsErpAA);
+
+
+
+    return gkCustomerDto;
+
+  // return customerRepo.getGkCustomerDto();
   }
 
 }

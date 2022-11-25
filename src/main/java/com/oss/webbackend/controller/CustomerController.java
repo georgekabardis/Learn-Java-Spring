@@ -1,6 +1,7 @@
 package com.oss.webbackend.controller;
 
 import com.oss.webbackend.dto.CustomerDto;
+import com.oss.webbackend.dto.GkCustomerDto;
 import com.oss.webbackend.model.Customer;
 import com.oss.webbackend.service.CustomerService;
 import com.oss.webbackend.util.CatEjbConnectionBridge;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
@@ -90,4 +92,21 @@ public class CustomerController {
     }
 
 
-}
+
+    @GetMapping("/getgkCustomerDtoaa")
+    @ResponseBody
+    public GkCustomerDto getgkCustomerDtoaa() {
+        return  customerService.GkCustomerDto();
+    }
+
+
+    @PostMapping(path = "/setgkCustomerDtoaa")
+    public GkCustomerDto setgkCustomerDtoaa(@Valid @RequestBody GkCustomerDto gkCustomerDto) {
+
+        gkCustomerDto.getParamsErpAA().setParama(" retpar");
+
+         return gkCustomerDto;
+    }
+
+
+    }
